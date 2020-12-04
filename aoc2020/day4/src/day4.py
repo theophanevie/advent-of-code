@@ -40,21 +40,25 @@ def isvalid(passport : Dict) -> bool:
         return False
 
 
-with open(sys.argv[1],'r') as inputfile:
-    validpassport = 0
-    passport = {}
+def checkpassportvalidity(inputfile: str) -> int:
+    with open(inputfile,'r') as inputfile:
+        validpassport = 0
+        passport = {}
 
-    for line in inputfile:
-        line = line.strip()
+        for line in inputfile:
+            line = line.strip()
 
-        if line == "":
-            validpassport += isvalid(passport)
-            passport = {}
-            
-        else:
-            line = re.split(' |:', line)
-            for i in range(0, len(line), 2):
-                passport[line[i]] = line[i + 1]
+            if line == "":
+                validpassport += isvalid(passport)
+                passport = {}
+                
+            else:
+                line = re.split(' |:', line)
+                for i in range(0, len(line), 2):
+                    passport[line[i]] = line[i + 1]
 
-validpassport += isvalid(passport)
-print(validpassport)
+    validpassport += isvalid(passport)
+    return validpassport
+
+if __name__ == "__main__":
+    print(checkpassportvalidity(sys.argv[1]))
