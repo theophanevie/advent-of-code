@@ -1,6 +1,6 @@
 import pytest
 import os
-from ..src.day8 import check, check_firstpart
+from ..src.day8 import check_secondpart, check_firstpart
 
 def test_day4_firstpart():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -10,4 +10,4 @@ def test_day4_firstpart():
 def test_day4_secondpart():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     path = os.path.join('..', 'input', 'provided-test.txt')
-    assert 8 == check(path)
+    assert 8 == check_secondpart(path)

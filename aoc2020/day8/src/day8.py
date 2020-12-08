@@ -14,19 +14,14 @@ class Instruction(Enum):
 
 @dataclass
 class Line:
-    instr: str
+    instr: Instruction
     offset: int 
     executed: bool
 
-    def __init__(self, instr: Instruction, offset: int=-1):
+    def __init__(self, instr: Instruction, offset: int):
         self.instr = instr
         self.offset = offset
         self.executed = False
-
-
-def parseNumber(line: List[str]) -> int:
-    sign = 1 if line[1][0] == '+' else -1
-    return sign * int(line[1][1:])
 
 
 def parseInput(inputfile: TextIO) -> List[Line]:
@@ -38,13 +33,13 @@ def parseInput(inputfile: TextIO) -> List[Line]:
             break
 
         if line[0] == Instruction.acc.name:
-            l.append(Line(Instruction.acc, parseNumber(line)))
+            l.append(Line(Instruction.acc, int(line[1])))
         
         elif line[0] == Instruction.jmp.name:
-            l.append(Line(Instruction.jmp, parseNumber(line)))
+            l.append(Line(Instruction.jmp, int(line[1])))
 
         elif line[0] == Instruction.nop.name:
-            l.append(Line(Instruction.nop, parseNumber(line)))
+            l.append(Line(Instruction.nop, int(line[1])))
 
         else:
             raise Exception("Invalid instruction")
@@ -77,7 +72,7 @@ def check_firstpart(inputfile: str) -> int:
     return execute(l)[0]
     
 
-def check(inputfile: str) -> int:
+def check_secondpart(inputfile: str) -> int:
     with open(inputfile,'r') as inputfile:
         li = parseInput(inputfile)
 
@@ -106,4 +101,4 @@ def check(inputfile: str) -> int:
     return acc
 
 if __name__ == "__main__":
-    print(check(sys.argv[1]))
+    print(check_secondpart(sys.argv[1]))
