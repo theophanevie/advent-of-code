@@ -2,7 +2,7 @@ import sys
 from collections import defaultdict
 from dataclasses import dataclass
 from enum import Enum
-from typing import List, TextIO
+from typing import List, TextIO, Tuple
 import copy
 
 
@@ -16,18 +16,17 @@ class Instruction(Enum):
 class Line:
     instr: Instruction
     offset: int 
-    executed: bool
+    executed: bool = False
 
     def __init__(self, instr: Instruction, offset: int):
         self.instr = instr
         self.offset = offset
-        self.executed = False
 
 
 def parseInput(inputfile: TextIO) -> List[Line]:
     l = []
-    for line in inputfile:
-        line = line.strip().split()
+    for curline in inputfile:
+        line = curline.strip().split()
 
         if not line or line == ['']:
             break
@@ -47,7 +46,7 @@ def parseInput(inputfile: TextIO) -> List[Line]:
     return l
 
 
-def execute(l: List[Line]) -> int:
+def execute(l: List[Line]) -> Tuple[int, int]:
     acc = 0
     i = 0
     while i != len(l) and not l[i].executed:
@@ -66,14 +65,14 @@ def execute(l: List[Line]) -> int:
     return acc, i
 
 
-def check_firstpart(inputfile: str) -> int:
-    with open(inputfile,'r') as inputfile:
+def check_firstpart(filename: str) -> int:
+    with open(filename,'r') as inputfile:
         l = parseInput(inputfile)
     return execute(l)[0]
     
 
-def check_secondpart(inputfile: str) -> int:
-    with open(inputfile,'r') as inputfile:
+def check_secondpart(filename: str) -> int:
+    with open(filename,'r') as inputfile:
         li = parseInput(inputfile)
 
     j = 0
