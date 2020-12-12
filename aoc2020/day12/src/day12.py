@@ -28,18 +28,21 @@ class Ship():
         tmpy = self.offset_x * int(math.sin(offsetangle)) \
             + self.offset_y * int(math.cos(offsetangle))
 
-        self.offset_x, self.offset_y = int(tmpx), int(tmpy)
+        self.offset_x, self.offset_y = tmpx, tmpy
 
 
     def moove(self, instr: str) -> None:
         angle = math.radians(Direction[instr[0]].value)
 
+        tmpx = int(math.cos(angle) * int(instr[1:]))
+        tmpy = int(math.sin(angle) * int(instr[1:]))
+
         if self.usewaypoint:
-            self.offset_x += int(math.cos(angle) * int(instr[1:]))
-            self.offset_y += int(math.sin(angle) * int(instr[1:]))
+            self.offset_x += tmpx
+            self.offset_y += tmpy
         else:
-            self.coord_x += int(math.cos(angle) * int(instr[1:]))
-            self.coord_y += int(math.sin(angle) * int(instr[1:]))
+            self.coord_x += tmpx
+            self.coord_y += tmpy
 
 
     def getinstruction(self, instr: str) -> None:
