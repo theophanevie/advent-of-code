@@ -38,9 +38,7 @@ def check_secondpart(filename: str) -> int:
     with open(filename,'r') as inputfile:
        bus, start = parseinput(inputfile)
     
-    nbbus = len(bus)
     start = 0
-    
     offset = 1
     i = 0
     while i < len(bus):
@@ -49,21 +47,14 @@ def check_secondpart(filename: str) -> int:
         while not valid:
 
             start += offset
-            # print(f'test number {start=}')
             valid = True
+            
             for j in range(i + 1):
                 if (start + bus[j][1]) % bus[j][0] != 0:
                     valid = False
                     break
 
-        for j in range(i + 1):
-            print(f'{start} + {bus[j][1]} % {bus[j][0]} , {(start + bus[j][1]) % bus[j][0] == 0}')
-
         offset *= bus[i][0]
-        print("="*15)
-        print(f'{start=}')
-        print(f'{offset=}')
-        print("="*15)
         i += 1
 
     return start
