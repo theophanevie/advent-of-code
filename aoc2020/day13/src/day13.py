@@ -11,7 +11,7 @@ def parseinput(inputfile: TextIO) -> Tuple[List[Tuple[int, int]], int]:
         if busid != 'x':
             bus.append((int(busid),i))
 
-    bus.sort(key=lambda  x: x[0], reverse=True)
+    bus.sort(key=lambda  x: x[0])
 
     return bus, start
 
@@ -59,7 +59,7 @@ def check_secondpart(filename: str) -> int:
         for j in range(i + 1):
             print(f'{start} + {bus[j][1]} % {bus[j][0]} , {(start + bus[j][1]) % bus[j][0] == 0}')
 
-        offset = start + max(bus[:i + 1], key=lambda x: x[1])[1]
+        offset *= bus[i][0]
         print("="*15)
         print(f'{start=}')
         print(f'{offset=}')
