@@ -1,11 +1,10 @@
 import sys
 import re
-from typing import TextIO, Dict, List, Tuple, DefaultDict
+from typing import TextIO, Dict, List, Tuple, DefaultDict, Set
 import copy
-import random
 from collections import defaultdict
 
-def getregex(inputfile: TextIO) -> Dict[str, List[int]]:
+def getfields(inputfile: TextIO) -> Dict[str, Set[int]]:
     """
     Create a dict with all regex : 
     - key : ticket field name
@@ -22,10 +21,11 @@ def getregex(inputfile: TextIO) -> Dict[str, List[int]]:
 
         fieldname = line[:pos1]
 
-        value = [i for i in range(int(line[pos1 + 2:pos3]), \
-            int(line[pos3 + 1:pos2 - 1]) + 1)]
-        value += [i for i in range(int(line[pos2 +3:pos4]), \
-            int(line[pos4 + 1:]) + 1)]
+        value = set()
+        for i in range(int(line[pos1 + 2:pos3]), int(line[pos3 + 1:pos2 - 1]) + 1):
+            value.add(i)
+        for i in range(int(line[pos2 +3:pos4]), int(line[pos4 + 1:]) + 1):
+            value.add(i)
 
         field[fieldname] = value
 
@@ -57,7 +57,7 @@ def suminvalidfield(line: List[str], field: Dict) -> int:
 
 def check_firstpart(filename: str) -> int:
     with open(filename,'r') as inputfile:
-        field = getregex(inputfile)
+        field = getfields(inputfile)
 
         line = inputfile.readline().strip()
         while line != 'nearby tickets:':
@@ -70,12 +70,12 @@ def check_firstpart(filename: str) -> int:
         return res
 
 
-def fieldposition(line: List[str], field: Dict[str, List[int]]) \
+def fieldposition(line: List[str], field: Dict[str, Set[int]]) \
         -> DefaultDict[str, List[int]]:
     """
     Create a dict with all valid position for a field
     """
-    fieldpos = defaultdict(lambda: [])
+    fieldpos = defaultdict(list)
 
     for i in range(len(line)):
         nb = int(line[i])
@@ -131,7 +131,7 @@ def matchfield(ticket: Dict[str, List[int]], ticketvalue: List[str]) -> int:
 
 def check_secondpart(filename: str) -> int:
     with open(filename,'r') as inputfile:
-        field = getregex(inputfile)
+        field = getfields(inputfile)
 
         line = inputfile.readline().strip()
         while line != 'your ticket:':
