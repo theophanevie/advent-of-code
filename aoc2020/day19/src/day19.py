@@ -6,6 +6,10 @@ from collections import defaultdict
 rulestype = Dict[str, Tuple[bool, List[str]]]
 
 def parse(inputfile: TextIO) -> Tuple[rulestype, List[str]]:
+    """
+    construct a dict [ruleid : (isfinal, list of ruleid or final letter)
+    and the list of msgs
+    """
     
     rules = {}
     for line in inputfile:
@@ -18,19 +22,22 @@ def parse(inputfile: TextIO) -> Tuple[rulestype, List[str]]:
         split = [letter for letter in re.split(' |\"', line[pos + 1:]) if letter != '']
         rules[line[:pos]] = (len(split) == 1 and line.find("\"") != -1, split)
 
-    msgs = []
-    for line in inputfile:
-        msgs.append(line.strip())
+    msgs = [line.strip() for line in inputfile]
 
     return rules, msgs
     
 
 def buildregexp_(rules : rulestype, rule, seen):
+    """
+    recursively build the regex with match all rules
+    """
     seen[rule] += 1
 
+    # if these two rules are seen too many times stop the recursion
     if seen[rule] > 50 and rule in ['8', '11']:
         return ''
 
+    # return the final letter
     if rules[rule][0]:
         return rules[rule][1][0]
 
@@ -45,6 +52,9 @@ def buildregexp_(rules : rulestype, rule, seen):
 
 
 def buildregexp(rules) -> str:
+    """
+    build the regex with match all rules
+    """
     seen = defaultdict(lambda: 0)
 
     regexp = ''
