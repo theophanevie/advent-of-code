@@ -1,4 +1,4 @@
-from puzzles.day01_ex2 import compute_max_cal
+from solver.day01_ex2 import compute_max_cal
 
 
 def test_day1_ex2():
