@@ -7,15 +7,15 @@ def load_file(filename: str) -> tuple[list[list[str]], list[list[str]]]:
     file_content = [line.strip() for line in file_tmp]
     middle_of_file = file_content.index("")
 
-    instructions = [instruction.split(" ") for instruction in file_content[middle_of_file + 1:]]
+    instructions = [instruction.split(" ") for instruction in file_content[middle_of_file + 1 :]]
 
     stacks = []
     for x in range(0, len(file_tmp[middle_of_file - 1]), 4):
         tmp_stack = []
-        for line in file_tmp[:middle_of_file - 1]:
+        for line in file_tmp[: middle_of_file - 1]:
 
             if len(line) > x + 3:
-                tmp_stack.append(line[x: x + 3])
+                tmp_stack.append(line[x : x + 3])
 
         tmp_stack.reverse()
         stacks.append([x for x in tmp_stack if x != "   "])

@@ -1,5 +1,7 @@
-from solver.day02_ex1 import compute_strategy_score as compute_strategy_score_ex1
-from solver.day02_ex2 import compute_strategy_score as compute_strategy_score_ex2
+from solver.day02_ex1 import \
+    compute_strategy_score as compute_strategy_score_ex1
+from solver.day02_ex2 import \
+    compute_strategy_score as compute_strategy_score_ex2
 
 
 def test_day2_ex1():

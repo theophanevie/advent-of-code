@@ -1,12 +1,12 @@
 import sys
 
 points = {
-    'X': 0,
-    'Y': 1,
-    'Z': 2,
-    'A': 0,
-    'B': 1,
-    'C': 2,
+    "X": 0,
+    "Y": 1,
+    "Z": 2,
+    "A": 0,
+    "B": 1,
+    "C": 2,
 }
 
 
@@ -26,7 +26,7 @@ def compute_round_score(opponent: int, you: int) -> int:
 
 
 def compute_strategy_score(filename: str) -> int:
-    strategy = [line.strip().split(' ') for line in open(filename, 'r').readlines()]
+    strategy = [line.strip().split(" ") for line in open(filename, "r").readlines()]
     strategy_score = 0
 
     for cur_round in strategy:

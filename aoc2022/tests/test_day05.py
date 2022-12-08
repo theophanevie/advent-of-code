@@ -2,7 +2,7 @@ from solver.day05_ex1 import compute_new_stacks
 
 
 def test_day2_ex1():
-    assert compute_new_stacks("inputs/input_day05_0") == 'CMZ'
+    assert compute_new_stacks("inputs/input_day05_0") == "CMZ"
     assert compute_new_stacks("inputs/input_day05_1") == "GRTSWNJHH"
 
 
