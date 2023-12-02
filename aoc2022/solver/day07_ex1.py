@@ -75,7 +75,3 @@ def to_delete(filename: str) -> int:
             return sum(dir_size[:i])
 
     raise ValueError("Invalid input fs")
-
-
-if __name__ == "__main__":
-    print(to_delete(sys.argv[1]))
