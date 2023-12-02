@@ -4,9 +4,10 @@
 
 -- Eric Wastl, Advent of Code maker
 
-[aoc2019](https://adventofcode.com/2019)
-[aoc2020](https://adventofcode.com/2020)
-[aoc2021](https://adventofcode.com/2021)
-[aoc2022](https://adventofcode.com/2022)
+I do it with friends and colleagues, and it's always fun to discuss our solutions. Here are my attempts:
 
-I'm doing it on a private leaderboard with friends, it's quite fun. Here are my solutions.
+## 2023 Edition
+
+[![Advent Of Code 2023](https://github.com/theophanevie/aoc/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/theophanevie/aoc/actions/workflows/test.yml)
+
+Python 3.11
