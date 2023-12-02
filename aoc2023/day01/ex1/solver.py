@@ -1,5 +1,5 @@
-import sys
 import string
+import sys
 
 
 def reader(input_file: str) -> str:

@@ -1,5 +1,5 @@
-import sys
 import string
+import sys
 
 # Since eight-two is meant to be understood as 82, we can't replace all the letters with the number.
 # The maximum number of letters that can be reused from one digit to another is 1, so we need to keep the first and

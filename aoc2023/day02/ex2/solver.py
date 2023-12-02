@@ -1,5 +1,5 @@
-import sys
 import re
+import sys
 from functools import reduce
 
 CUBE_INPUT = r"(\d+) ([a-z]+)"

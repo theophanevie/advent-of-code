@@ -12,13 +12,6 @@ python = "^3.11"
 ruff = "^0.1.4"
 
 [tool.ruff]
-ignore = ["F503", "E203"]
-extend-select = [
-  "E", # pycodestyle
-  "W", # pycodestyle
-  "I", # isort
-  "C", # complex-structure
-]
 line-length = 120
 exclude = ["__pycache__", "venv"]
 

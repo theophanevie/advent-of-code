@@ -19,15 +19,17 @@ jobs:
         cache: 'pip'
 
     - name: Install dependencies
-      run: poetry install --dev
+      run: |
+        pip install poetry==1.5.1
+        poetry install --dev
 
     - name: Lint with Ruff
-      run: |
-        pip install ruff
-        ruff --output-format=github .
+      working-directory: ./aoc2023
+      run: ruff --output-format=github .
       continue-on-error: true
 
     - name: Test with pytest
+      working-directory: ./aoc2023
       run: |
         pip install pytest pytest-cov
         pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html

@@ -1,6 +1,5 @@
-import sys
 import re
-
+import sys
 
 CUBE_INPUT = r"(\d+) ([a-z]+)"
 GAME_REGEX = r"Game (\d+): (.*)"
