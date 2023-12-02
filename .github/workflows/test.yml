@@ -32,8 +32,16 @@ jobs:
     - name: Test with pytest
       run: poetry run pytest --junitxml=junit/test-results.xml --cov=. --cov-report=xml --cov-report=html --cov-fail-under=95
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
+    - uses: tj-actions/coverage-badge-py@v2
+      name: Generate coverage badge
+
+    - name: Verify Changed files
+      uses: tj-actions/verify-changed-files@v16
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path--to-lcov: coverage.xml
+        files: coverage.svg
+
+    - name: Publish coverage report to GitHub Pages
+#      if: ${{ github.ref == 'refs/heads/master' }}
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: coverage.svg
