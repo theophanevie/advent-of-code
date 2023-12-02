@@ -9,5 +9,7 @@ I do it with friends and colleagues, and it's always fun to discuss our solution
 ## 2023 Edition
 
 [![Advent Of Code 2023](https://github.com/theophanevie/aoc/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/theophanevie/aoc/actions/workflows/test.yml)
+[![Coverage](https://theophanevie.github.io/aoc/coverage.svg?raw=true)](https://github.com/theophanevie/aoc/actions/workflows/test.yml)
+
 
 Python 3.11
