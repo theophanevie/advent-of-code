@@ -21,7 +21,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install poetry==1.5.1
-        poetry install --dev
+        poetry install --with dev
 
     - name: Lint with Ruff
       working-directory: ./aoc2023
