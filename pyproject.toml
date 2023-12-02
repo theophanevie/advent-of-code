@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "aoc"
+version = "0.1.0"
+description = ""
+authors = ["Théophane Vié <theophane.vie@petit-nuage.org>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.4"
+
+[tool.ruff]
+ignore = ["F503", "E203"]
+extend-select = [
+  "E", # pycodestyle
+  "W", # pycodestyle
+  "I", # isort
+  "C", # complex-structure
+]
+line-length = 120
+exclude = ["__pycache__", "venv"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
