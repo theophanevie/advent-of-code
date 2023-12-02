@@ -34,14 +34,12 @@ jobs:
 
     - uses: tj-actions/coverage-badge-py@v2
       name: Generate coverage badge
-
-    - name: Verify Changed files
-      uses: tj-actions/verify-changed-files@v16
       with:
-        files: coverage.svg
+        working-directory: ./aoc2023
+        output: ./build/coverage.svg
 
     - name: Publish coverage report to GitHub Pages
 #      if: ${{ github.ref == 'refs/heads/master' }}
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: coverage.svg
+        folder: ./build/
