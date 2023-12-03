@@ -11,10 +11,13 @@ def reader(input_file: str) -> [str]:
 
 
 def is_part_number(schematic: [str], y: int, x: int) -> bool:
-    # Check is there is any symbol adjacent to a given  x, y
-    # [ (y - 1, x - 1), (y - 1, x), (y - 1, x + 1)
-    # [ (y, x - 1), (y, x), (y, x + 1)
-    # [ (y + 1, x - 1), (y + 1, x), (y + 1, x + 1)
+    """
+    Check is there is any symbol adjacent to a given  x, y
+
+    [ (y - 1, x - 1), (y - 1, x), (y - 1, x + 1) ]
+    [ (y,     x - 1), (y,     x), (y,     x + 1) ]
+    [ (y + 1, x - 1), (y + 1, x), (y + 1, x + 1) ]
+    """
 
     def test_x_axis(b: int, a: int):
         if a > 0:
@@ -56,17 +59,21 @@ def main(input_file: str) -> int:
         valid_part_number = False
 
         for x in range(len(schematic[y])):
+            # If the current character is a digit, add it to the buffer and check if the part is valid.
             if schematic[y][x].isdigit():
                 number_buffer += schematic[y][x]
                 if not valid_part_number:
                     valid_part_number = is_part_number(schematic, y, x)
 
+            # If the current character is not a digit, the buffer is emptied.
             else:
+                # Add motor part number to sum if part is valid
                 if valid_part_number:
                     valid_part_sum += int(number_buffer)
                 valid_part_number = False
                 number_buffer = ""
 
+        # Flush the buffer (only occurs if a digit was the last character of a line)
         if valid_part_number:
             valid_part_sum += int(number_buffer)
 
