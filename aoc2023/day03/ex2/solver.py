@@ -1,6 +1,8 @@
 import sys
 from collections import defaultdict
 
+GEAR_SYMBOL = '*'
+
 
 def reader(input_file: str) -> [str]:
     input_file = open(input_file, "r").readlines()
@@ -9,7 +11,7 @@ def reader(input_file: str) -> [str]:
 
 
 def find_gears(schematic: [str], y: int, x: int) -> [(int, int)]:
-    # Check is there is any symbol adjacent to a given  x, y
+    # Check is there is a gear '*' adjacent to a given  x, y
     # [ (y - 1, x - 1), (y - 1, x), (y - 1, x + 1)
     # [ (y, x - 1), (y, x), (y, x + 1)
     # [ (y + 1, x - 1), (y + 1, x), (y + 1, x + 1)
@@ -17,14 +19,14 @@ def find_gears(schematic: [str], y: int, x: int) -> [(int, int)]:
 
     def test_x_axis(b: int, a: int):
         if a > 0:
-            if "*" == schematic[b][a - 1]:
+            if GEAR_SYMBOL == schematic[b][a - 1]:
                 gear_coordinates.append((b, a - 1))
 
-        if "*" == schematic[b][a]:
+        if GEAR_SYMBOL == schematic[b][a]:
             gear_coordinates.append((b, a))
 
         if a < len(schematic[0]) - 1:
-            if "*" == schematic[b][a + 1]:
+            if GEAR_SYMBOL == schematic[b][a + 1]:
                 gear_coordinates.append((b, a + 1))
 
         return None
@@ -40,23 +42,27 @@ def find_gears(schematic: [str], y: int, x: int) -> [(int, int)]:
     return gear_coordinates
 
 
-
-def main(input_file: str) -> int:
+def get_gears_engine_parts(schematic: [str]) -> dict[(int, int), [int]]:
     """
-    https://adventofcode.com/2023/day/3#part1
+    Build a dictionary of :
+        index: the gear coordinates
+        values: a list of all engines part touching the gear
     """
-    schematic = reader(input_file)
     gears = defaultdict(list)
 
     for y in range(len(schematic)):
         number_buffer = ""
+        # set of gear coordinates touching the engine part
         found_gears = set()
 
         for x in range(len(schematic[y])):
+            
+            # If the current char is a digit, add it to the buffer and search for gear nearby
             if schematic[y][x].isdigit():
                 number_buffer += schematic[y][x]
                 found_gears |= set(find_gears(schematic, y, x))
 
+            # If the current char is not a digit but the buffer is full, flush it
             elif len(number_buffer):
                 number = int(number_buffer)
                 for gear_coord in found_gears:
@@ -64,12 +70,24 @@ def main(input_file: str) -> int:
 
                 found_gears = set()
                 number_buffer = ""
-
+        
+        # Flush the buffer (happens only if a digit was the last char of a line)
         if len(number_buffer):
             number = int(number_buffer)
             for gear_coord in found_gears:
                 gears[gear_coord].append(number)
 
+    return gears
+
+
+def main(input_file: str) -> int:
+    """
+    https://adventofcode.com/2023/day/3#part1
+    """
+    schematic = reader(input_file)
+    gears = get_gears_engine_parts(schematic)
+
+    # Build the list of gear ration for all gear touching only two engine parts
     gear_ratios = []
     for engine_parts in gears.values():
         if len(engine_parts) == 2:
