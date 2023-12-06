@@ -8,7 +8,7 @@ class Race:
     time: int
     max_dist: int
 
-    def get_quadratic_result(self) -> [int]:
+    def get_quadratic_result(self) -> (int, int):
         """
         https://en.wikipedia.org/wiki/Quadratic_formula
 
