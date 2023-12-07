@@ -50,11 +50,11 @@ def get_hand_type(hand: list[Card]) -> HandType:
         return HandType.ONE_PAIR
 
     if len(counter) == 3:
-        for c in counter:
-            if counter[c] == 3:
-                if Card["_J"] in counter:
-                    return HandType.FOUR_OF_A_KIND
-                return HandType.THREE_OF_A_KIND
+        # Nb of occ of the most common elt
+        if counter.most_common()[0][1] == 3:
+            if Card["_J"] in counter:
+                return HandType.FOUR_OF_A_KIND
+            return HandType.THREE_OF_A_KIND
 
         if Card["_J"] in counter:
             if counter[Card["_J"]] == 2:
@@ -66,9 +66,9 @@ def get_hand_type(hand: list[Card]) -> HandType:
         if Card["_J"] in counter:
             return HandType.FIVE_OF_A_KIND
 
-        for c in counter:
-            if counter[c] == 3:
-                return HandType.FULL_HOUSE
+        # Nb of occ of the most common elt
+        if counter.most_common()[0][1] == 3:
+            return HandType.FULL_HOUSE
 
         return HandType.FOUR_OF_A_KIND
 
