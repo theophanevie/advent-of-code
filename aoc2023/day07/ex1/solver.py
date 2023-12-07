@@ -101,15 +101,10 @@ def main(input_file: str) -> int:
     """
     https://adventofcode.com/2023/day/7#part1
     """
-    winning = 0
     games = parse_input(input_file)
     games.sort()
-    for g in games:
-        print(g)
-    for i, g in enumerate(games):
-        winning += (i + 1) * g.bid
 
-    return winning
+    return sum((i + 1) * g.bid for i, g in enumerate(games))
 
 
 if __name__ == '__main__':  # pragma: no cover
