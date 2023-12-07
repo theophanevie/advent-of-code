@@ -10,7 +10,7 @@ EX1
 
 
 def test_ex1():
-    assert solver_ex1.main(f"{DAY}/ex1/input.txt") == 248179786
+    assert solver_ex1.main(f"{DAY}/ex1/test.txt") == 6642
 
 
 """
@@ -19,4 +19,4 @@ EX2
 
 
 def test_ex2():
-    assert solver_ex2.main(f"{DAY}/ex2/input.txt") == 247885995
+    assert solver_ex2.main(f"{DAY}/ex2/test.txt") == 6870
