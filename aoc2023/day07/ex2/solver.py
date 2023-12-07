@@ -117,8 +117,7 @@ def main(input_file: str) -> int:
     games = parse_input(input_file)
     games.sort()
 
-    return sum((i + 1) * g.bid for i, g in enumerate(games))
-
+    return sum(i * g.bid for i, g in enumerate(games, start=1))
 
 
 if __name__ == '__main__':  # pragma: no cover
