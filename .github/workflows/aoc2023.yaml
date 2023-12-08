@@ -38,10 +38,7 @@ jobs:
           path: "./aoc2023"
 
       - name: Create build folder
-        run: |
-          ls
-          pwd
-          mkdir -p build
+        run: ls
 
       - uses: tj-actions/coverage-badge-py@v2
         name: Generate coverage badge
