@@ -1,6 +1,6 @@
 name: Advent Of Code 2023
 
-on: push
+on: [push]
 
 jobs:
   runs-on: ubuntu-latest
