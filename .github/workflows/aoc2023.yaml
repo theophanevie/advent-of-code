@@ -22,6 +22,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    needs: [check]
+
     defaults:
       run:
         working-directory: ./aoc2023
