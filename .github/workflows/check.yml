@@ -1,0 +1,22 @@
+name: Advent Of Code 2023
+
+on: [push]
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    defaults:
+      run:
+        working-directory: ./aoc2023
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: .github/workflows/python-env.yml
+
+    - name: Lint with Ruff
+      run: poetry run ruff --output-format=github .

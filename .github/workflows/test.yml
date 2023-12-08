@@ -3,8 +3,8 @@ name: Advent Of Code 2023
 on: [push]
 
 jobs:
-  build:
 
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,21 +16,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-        cache: 'pip'
-
-    - name: Install dependencies
-      run: |
-        pip install poetry==1.5.1
-        poetry install --with dev
-
-    - name: Lint with Ruff
-      run: poetry run ruff --output-format=github .
+    - uses: .github/workflows/python-env.yml
 
     - name: Test with pytest
       run: poetry run pytest --junitxml=junit/test-results.xml --cov=. --cov-report=xml --cov-report=html --cov-fail-under=95
+
+  build-and-deploy:
+
 
     - name: Create build folder
       run: mkdir -p build
@@ -42,7 +34,9 @@ jobs:
         output: ./build/coverage.svg
 
     - name: Publish coverage report to GitHub Pages
-#      if: ${{ github.ref == 'refs/heads/master' }}
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: ./aoc2023/build/
+
+# Artefact
+# Reuse job in stage

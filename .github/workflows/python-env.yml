@@ -1,0 +1,15 @@
+name: "Set up poetry env"
+description: "Set up poetry env"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        pip install poetry==1.5.1
+        poetry install --with dev
