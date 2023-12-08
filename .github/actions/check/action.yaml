@@ -3,7 +3,7 @@ description: "Linting with ruff"
 
 inputs:
   path:
-    description: 'Who to greet'
+    description: 'Path to module'
     required: true
 
 runs:
@@ -13,10 +13,7 @@ runs:
       with:
         path: ${{ inputs.path }}
 
-    - name: move
-      shell: bash
-      run: cd ${{ inputs.path }}
-
     - name: Lint with Ruff
+      working-directory: ${{ inputs.path }}
       shell: bash
       run: poetry run ruff --output-format=github .
