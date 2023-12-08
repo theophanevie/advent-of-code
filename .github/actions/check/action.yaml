@@ -1,10 +1,21 @@
 name: "Linting with ruff"
 description: "Linting with ruff"
 
+inputs:
+  path:
+    description: 'Who to greet'
+    required: true
+
 runs:
   using: "composite"
   steps:
     - uses: ./.github/actions/python-env
+      with:
+        path: ${{ inputs.path }}
+
+    - name: move
+      shell: bash
+      run: cd ${{ inputs.path }}
 
     - name: Lint with Ruff
       shell: bash

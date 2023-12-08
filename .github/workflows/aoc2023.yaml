@@ -16,3 +16,5 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: ./.github/actions/check
+        with:
+          path: "./aoc2023"

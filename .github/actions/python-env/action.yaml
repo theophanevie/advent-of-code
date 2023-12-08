@@ -1,6 +1,11 @@
 name: "Set up poetry env"
 description: "Set up poetry env"
 
+inputs:
+  path:
+    description: 'Who to greet'
+    required: true
+
 runs:
   using: "composite"
   steps:
@@ -8,6 +13,10 @@ runs:
       with:
         python-version: '3.11'
         cache: 'pip'
+
+    - name: move
+      shell: bash
+      run: cd ${{ inputs.path }}
 
     - name: Install dependencies
       shell: bash
