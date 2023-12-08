@@ -1,6 +1,6 @@
 name: Advent Of Code 2023
 
-on: [push]
+on: push
 
 jobs:
 
@@ -10,4 +10,5 @@ jobs:
         working-directory: ./aoc2023
 
     steps:
-    - uses: ./.github/actions/check
+
+      - uses: ./.github/actions/check
