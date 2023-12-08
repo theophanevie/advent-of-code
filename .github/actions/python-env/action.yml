@@ -2,6 +2,11 @@ name: "Set up poetry env"
 description: "Set up poetry env"
 
 runs:
+  runs-on: ubuntu-latest
+  strategy:
+    matrix:
+      python-version: [ "3.11" ]
+
   using: "composite"
   steps:
     - uses: actions/setup-python@v4
