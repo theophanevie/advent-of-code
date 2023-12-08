@@ -1,0 +1,19 @@
+name: "Pytest"
+description: "Testing things"
+
+inputs:
+  path:
+    description: 'Path to module'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - uses: ./.github/actions/python-env
+      with:
+        path: ${{ inputs.path }}
+
+    - name: Test with pytest
+      working-directory: ${{ inputs.path }}
+      shell: bash
+      run: poetry run pytest --junitxml=junit/test-results.xml --cov=. --cov-report=xml --cov-report=html --cov-fail-under=95

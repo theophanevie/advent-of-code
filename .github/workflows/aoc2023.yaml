@@ -18,3 +18,7 @@ jobs:
       - uses: ./.github/actions/check
         with:
           path: "./aoc2023"
+
+      - uses: ./.github/actions/test
+        with:
+          path: "./aoc2023"
