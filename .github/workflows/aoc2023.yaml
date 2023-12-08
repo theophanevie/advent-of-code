@@ -15,4 +15,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/check
+      - uses: .github/actions/check
