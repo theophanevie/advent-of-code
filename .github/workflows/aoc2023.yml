@@ -3,6 +3,7 @@ name: Advent Of Code 2023
 on: push
 
 jobs:
+  runs-on: ubuntu-latest
 
   check:
     defaults:
