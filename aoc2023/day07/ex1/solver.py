@@ -81,7 +81,7 @@ class Game:
 
         raise ValueError("Two identical hands")  # pragma: no cover
 
-    def __str__(self):
+    def __str__(self):  # pragma: no cover
         return f"{[c.name for c in self.hand]} : {self.type.name}"
 
 
