@@ -20,8 +20,7 @@ runs:
 
     - name: Install dependencies
       shell: bash
+      working-directory: ${{ inputs.path }}
       run: |
-        cd ${{ inputs.path }}
-        pwd
         pip install poetry==1.5.1
         poetry install --with dev
