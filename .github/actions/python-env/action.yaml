@@ -15,6 +15,7 @@ runs:
         cache: 'pip'
 
     - name: Install dependencies
+      shell: bash
       run: |
         pip install poetry==1.5.1
         poetry install --with dev

@@ -7,4 +7,5 @@ runs:
     - uses: ./.github/actions/python-env
 
     - name: Lint with Ruff
+      shell: bash
       run: poetry run ruff --output-format=github .
