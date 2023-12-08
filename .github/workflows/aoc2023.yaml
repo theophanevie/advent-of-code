@@ -5,7 +5,7 @@ on: [push]
 jobs:
 
 
-  check:
+  check-and-test:
     runs-on: ubuntu-latest
 
     defaults:
@@ -19,18 +19,31 @@ jobs:
         with:
           path: "./aoc2023"
 
-  test:
+      - uses: ./.github/actions/test
+        with:
+          path: "./aoc2023"
+
+  build-and-deploy:
     runs-on: ubuntu-latest
 
-    needs: [check]
+    needs: [check-and-test]
 
     defaults:
       run:
         working-directory: ./aoc2023
 
     steps:
-      - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/test
+      - name: Create build folder
+        run: mkdir -p build
+
+      - uses: tj-actions/coverage-badge-py@v2
+        name: Generate coverage badge
         with:
-          path: "./aoc2023"
+          working-directory: ./aoc2023
+          output: ./build/coverage.svg
+
+      - name: Publish coverage report to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ./aoc2023/build/
