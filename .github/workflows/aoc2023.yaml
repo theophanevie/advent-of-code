@@ -19,6 +19,16 @@ jobs:
         with:
           path: "./aoc2023"
 
+  test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./aoc2023
+
+    steps:
+      - uses: actions/checkout@v4
+
       - uses: ./.github/actions/test
         with:
           path: "./aoc2023"
