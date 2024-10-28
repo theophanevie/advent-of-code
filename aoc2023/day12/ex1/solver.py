@@ -1,5 +1,5 @@
 import sys
-from typing import Dict, List, Any
+from typing import Any
 
 POS = tuple[int, int]
 PADDING = 1
