@@ -1,5 +1,5 @@
 # Advent of Code
-[![Advent Of Code 2023](https://github.com/theophanevie/advent-of-code/actions/workflows/aoc2023.yaml/badge.svg?branch=master)](https://github.com/theophanevie/advent-of-code/actions/workflows/aoc2023.yaml)
+[![Advent Of Code 2023 ](https://github.com/theophanevie/advent-of-code/actions/workflows/aoc2023.yaml/badge.svg?branch=master)](https://github.com/theophanevie/advent-of-code/actions/workflows/aoc2023.yaml)
 
 
 > Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language

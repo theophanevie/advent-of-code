@@ -31,6 +31,9 @@ jobs:
         working-directory: ./aoc2023
 
     steps:
+      - name: Create build folder
+        run: ls
+
       - name: Download coverage
         uses: actions/download-artifact@v3
         with:
@@ -45,6 +48,12 @@ jobs:
         with:
           working-directory: ./aoc2023
           output: ./build/coverage.svg
+
+      - name: Verify Changed files
+        uses: tj-actions/verify-changed-files@v16
+        id: verify-changed-files
+        with:
+          files: ./aoc2023/build/coverage.svg
 
       - name: Publish coverage report to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
