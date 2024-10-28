@@ -35,7 +35,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: coverage
-          path: "./aoc2023"
+          path: "./aoc2023/.coverage"
 
       - name: Create build folder
         run: ls
