@@ -25,9 +25,9 @@ class Race:
         """
         a = -1
         b = self.time
-        c = - self.max_dist
+        c = -self.max_dist
 
-        d = (b ** 2) - (4 * a * c)
+        d = (b**2) - (4 * a * c)
         root_1 = (-b - math.sqrt(d)) / (2 * a)
         root_2 = (-b + math.sqrt(d)) / (2 * a)
 
@@ -60,7 +60,7 @@ def main(input_file: str) -> int:
     return upper - lower + 1
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) != 2:
         raise ValueError(f"Invalid parameter, usage : {sys.argv[0]} <input_file.txt>")
     print(main(sys.argv[1]))

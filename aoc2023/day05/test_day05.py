@@ -25,7 +25,6 @@ def test_get_seed_location_one_by_one():
 
 
 def test_get_seed_location():
-
     _, maps = solver_ex1.parse_input(f"{DAY}/ex1/test.txt")
 
     assert solver_ex1.get_seed_location(79, maps) == 82
@@ -70,4 +69,4 @@ def test_get_seed_from_location():
 
 
 def test_ex2():
-     assert solver_ex2.main(f"{DAY}/ex2/test.txt") == 46
+    assert solver_ex2.main(f"{DAY}/ex2/test.txt") == 46

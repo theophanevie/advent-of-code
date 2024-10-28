@@ -16,12 +16,12 @@ def parse_input(input_file: str) -> tuple[dict[tuple[int, int], str], tuple[int,
     return grid, start_pos
 
 
-def find_next(grid: dict[tuple[int, int], str], cur_pos: tuple[int, int], from_pos: tuple[int, int]) \
-        -> tuple[int, int] | None:
+def find_next(
+    grid: dict[tuple[int, int], str], cur_pos: tuple[int, int], from_pos: tuple[int, int]
+) -> tuple[int, int] | None:
     deltas = []
 
     match grid[cur_pos]:
-
         case "|":
             deltas = [(0, -1), (0, 1)]
 
@@ -66,7 +66,6 @@ def main(input_file: str) -> int:
     grid, start_pos = parse_input(input_file)
 
     def pipe_explorer(seen: list[tuple[int, int]], cur_pos: tuple[int, int] | None, from_pos: tuple[int, int]) -> int:
-
         if cur_pos in seen:
             return len(seen)
 
@@ -76,13 +75,18 @@ def main(input_file: str) -> int:
         seen.append(cur_pos)
         return pipe_explorer(seen, find_next(grid, cur_pos, from_pos), cur_pos)
 
-    return max(pipe_explorer([start_pos], (start_pos[0], start_pos[1] + 1), start_pos),
-               pipe_explorer([start_pos], (start_pos[0] + 1, start_pos[1]), start_pos),
-               pipe_explorer([start_pos], (start_pos[0], start_pos[1] - 1), start_pos),
-               pipe_explorer([start_pos], (start_pos[0] - 1, start_pos[1]), start_pos)) // 2
+    return (
+        max(
+            pipe_explorer([start_pos], (start_pos[0], start_pos[1] + 1), start_pos),
+            pipe_explorer([start_pos], (start_pos[0] + 1, start_pos[1]), start_pos),
+            pipe_explorer([start_pos], (start_pos[0], start_pos[1] - 1), start_pos),
+            pipe_explorer([start_pos], (start_pos[0] - 1, start_pos[1]), start_pos),
+        )
+        // 2
+    )
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) != 2:
         raise ValueError(f"Invalid parameter, usage : {sys.argv[0]} <input_file.txt>")
     print(main(sys.argv[1]))

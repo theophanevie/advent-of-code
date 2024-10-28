@@ -10,11 +10,11 @@ def create_map_function(row: [int]) -> Callable[[int], int]:
     """
     Create a function computing the destination for the list of input "row"
     """
+
     def map_function(x: int) -> int:
         for offset in range(0, len(row), 3):
             # Check if the number is within start and start + max range
             if row[offset] <= x < (row[offset] + row[offset + 2]):
-
                 # Compute the diff
                 diff = x - row[offset]
                 return row[offset + 1] + diff
@@ -51,7 +51,7 @@ def parse_input(input_file: str) -> ([str], [Callable[[int], int]]):
 def get_seed_from_location(loc: int, maps: [Callable[[int], int]]) -> int:
     tmp = loc
     for i in range(len(maps)):
-        tmp = maps[- (1 + i)](tmp)
+        tmp = maps[-(1 + i)](tmp)
 
     return tmp
 
@@ -71,7 +71,7 @@ def main(input_file: str) -> int:
         i += 1
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) != 2:
         raise ValueError(f"Invalid parameter, usage : {sys.argv[0]} <input_file.txt>")
     print(main(sys.argv[1]))

@@ -13,7 +13,7 @@ DIGIT_AS_LETTERS = [
     ("six", "s6x"),
     ("seven", "s7n"),
     ("eight", "e8t"),
-    ("nine", "n9e")
+    ("nine", "n9e"),
 ]
 
 
@@ -29,7 +29,7 @@ def main(input_file: str) -> int:
     return sum([int(line[0] + line[-1]) for line in reader(input_file)])
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) != 2:
         raise ValueError(f"Invalid parameter, usage : {sys.argv[0]} <input_file.txt>")
     print(main(sys.argv[1]))

@@ -1,7 +1,7 @@
 import sys
 from collections import defaultdict
 
-GEAR_SYMBOL = '*'
+GEAR_SYMBOL = "*"
 
 
 def reader(input_file: str) -> [str]:
@@ -59,7 +59,6 @@ def get_gears_engine_parts(schematic: [str]) -> dict[(int, int), [int]]:
         found_gears = set()
 
         for x in range(len(schematic[y])):
-            
             # If the current character is a digit, it is added to the buffer, and we search for gear nearby
             if schematic[y][x].isdigit():
                 number_buffer += schematic[y][x]
@@ -73,7 +72,7 @@ def get_gears_engine_parts(schematic: [str]) -> dict[(int, int), [int]]:
 
                 found_gears = set()
                 number_buffer = ""
-        
+
         # Flush the buffer (only occurs if a digit was the last character of a line)
         if len(number_buffer):
             number = int(number_buffer)
@@ -99,7 +98,7 @@ def main(input_file: str) -> int:
     return sum(gear_ratios)
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) != 2:
         raise ValueError(f"Invalid parameter, usage : {sys.argv[0]} <input_file.txt>")
     print(main(sys.argv[1]))

@@ -13,10 +13,12 @@ class Node:
     right: Any | None = None
     left: Any | None = None
 
-    def __str__(self):   # pragma: no cover
-        return (f"[{self.label}] "
-                f"r->{self.right.label if self.right else None} "
-                f"l->{self.left.label if self.left else None}")
+    def __str__(self):  # pragma: no cover
+        return (
+            f"[{self.label}] "
+            f"r->{self.right.label if self.right else None} "
+            f"l->{self.left.label if self.left else None}"
+        )
 
 
 def parse_input(input_file: str) -> tuple[str, dict[str, Node]]:
@@ -46,23 +48,23 @@ def main(input_file: str) -> int:
     instructions, nodes = parse_input(input_file)
 
     i = 0
-    node = nodes['AAA']
+    node = nodes["AAA"]
     instructions_len = len(instructions)
 
     while True:
-        if node.label == 'ZZZ':
+        if node.label == "ZZZ":
             return i
 
-        if instructions[i % instructions_len] == 'R':
+        if instructions[i % instructions_len] == "R":
             node = node.right
 
-        elif instructions[i % instructions_len] == 'L':
+        elif instructions[i % instructions_len] == "L":
             node = node.left
 
         i += 1
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) != 2:
         raise ValueError(f"Invalid parameter, usage : {sys.argv[0]} <input_file.txt>")
     print(main(sys.argv[1]))

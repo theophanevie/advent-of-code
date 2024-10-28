@@ -22,7 +22,6 @@ def find_next(grid: dict[POS, str], cur_pos: POS, from_pos: POS) -> POS | None:
     deltas = []
 
     match grid[cur_pos]:
-
         case "|":
             deltas = [(0, -1), (0, 1)]
 
@@ -57,9 +56,7 @@ def find_next(grid: dict[POS, str], cur_pos: POS, from_pos: POS) -> POS | None:
 
 
 def find_loop(grid: dict[POS, str], start_pos: POS) -> list[POS]:
-
     def pipe_explorer(seen: list[POS], cur_pos: POS | None, from_pos: POS) -> list[POS]:
-
         if cur_pos in seen:
             return seen
 
@@ -69,11 +66,13 @@ def find_loop(grid: dict[POS, str], start_pos: POS) -> list[POS]:
         seen.append(cur_pos)
         return pipe_explorer(seen, find_next(grid, cur_pos, from_pos), cur_pos)
 
-    return max(pipe_explorer([start_pos], (start_pos[0], start_pos[1] + 1), start_pos),
-               pipe_explorer([start_pos], (start_pos[0] + 1, start_pos[1]), start_pos),
-               pipe_explorer([start_pos], (start_pos[0], start_pos[1] - 1), start_pos),
-               pipe_explorer([start_pos], (start_pos[0] - 1, start_pos[1]), start_pos),
-               key=lambda x: len(x))
+    return max(
+        pipe_explorer([start_pos], (start_pos[0], start_pos[1] + 1), start_pos),
+        pipe_explorer([start_pos], (start_pos[0] + 1, start_pos[1]), start_pos),
+        pipe_explorer([start_pos], (start_pos[0], start_pos[1] - 1), start_pos),
+        pipe_explorer([start_pos], (start_pos[0] - 1, start_pos[1]), start_pos),
+        key=lambda x: len(x),
+    )
 
 
 def main(input_file: str) -> int:
@@ -112,7 +111,7 @@ def main(input_file: str) -> int:
     return len(possible_nest)
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) != 2:
         raise ValueError(f"Invalid parameter, usage : {sys.argv[0]} <input_file.txt>")
     print(main(sys.argv[1]))

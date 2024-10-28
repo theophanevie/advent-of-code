@@ -15,11 +15,13 @@ class Node:
     left: Any | None = None
     moves_to_z: list[str] = field(default_factory=list)
 
-    def __str__(self) -> str:   # pragma: no cover
-        return (f"[{self.label}] "
-                f"r->{self.right.label if self.right else None}, "
-                f"l->{self.left.label if self.left else None}, "
-                f"Z_dist->{self.moves_to_z}")
+    def __str__(self) -> str:  # pragma: no cover
+        return (
+            f"[{self.label}] "
+            f"r->{self.right.label if self.right else None}, "
+            f"l->{self.left.label if self.left else None}, "
+            f"Z_dist->{self.moves_to_z}"
+        )
 
 
 def parse_input(input_file: str) -> tuple[str, dict[str, Node]]:
@@ -48,13 +50,13 @@ def dist_to_z_node(start_node: Node, instructions: str) -> int:
     instructions_len = len(instructions)
 
     while True:
-        if node.label[-1] == 'Z':
+        if node.label[-1] == "Z":
             return i
 
-        if instructions[i % instructions_len] == 'R':
+        if instructions[i % instructions_len] == "R":
             node = node.right
 
-        elif instructions[i % instructions_len] == 'L':
+        elif instructions[i % instructions_len] == "L":
             node = node.left
 
         i += 1
@@ -76,7 +78,7 @@ def main(input_file: str) -> int:
     return lcm(*dist_to_z)
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) != 2:
         raise ValueError(f"Invalid parameter, usage : {sys.argv[0]} <input_file.txt>")
     print(main(sys.argv[1]))

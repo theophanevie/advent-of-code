@@ -66,7 +66,6 @@ def dist_from_galaxies(galaxies: list[POS]) -> dict[tuple[POS, POS], int]:
     distance = {}
     for galaxy_a in galaxies:
         for galaxy_b in galaxies:
-
             if (galaxy_b, galaxy_a) in distance:
                 continue
 
@@ -93,7 +92,7 @@ def main(input_file: str) -> int:
     return sum(distance.values())
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) != 2:
         raise ValueError(f"Invalid parameter, usage : {sys.argv[0]} <input_file.txt>")
     print(main(sys.argv[1]))

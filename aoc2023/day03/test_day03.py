@@ -9,29 +9,17 @@ EX1
 
 
 def test_ex1_is_adjacent_symbol_same_row():
-    schematic = [
-        "...",
-        "?..",
-        "..."
-    ]
+    schematic = ["...", "?..", "..."]
     assert solver_ex1.is_part_number(schematic, 1, 1)
 
 
 def test_ex1_is_adjacent_symbol_number():
-    schematic = [
-        "...",
-        "4..",
-        "..."
-    ]
+    schematic = ["...", "4..", "..."]
     assert not solver_ex1.is_part_number(schematic, 1, 1)
 
 
 def test_ex1_is_adjacent_symbol_diagonal():
-    schematic = [
-        "..?",
-        "...",
-        "..."
-    ]
+    schematic = ["..?", "...", "..."]
     assert solver_ex1.is_part_number(schematic, 1, 1)
 
 
@@ -49,20 +37,12 @@ EX2
 
 
 def test_ex2_gear_coord_two():
-    schematic = [
-        "..*",
-        ".4.",
-        ".*."
-    ]
+    schematic = ["..*", ".4.", ".*."]
     assert solver_ex2.find_gears(schematic, 1, 1) == [(0, 2), (2, 1)]
 
 
 def test_ex2_gear_engine_parts():
-    schematic = [
-        "..*",
-        ".4.",
-        ".*."
-    ]
+    schematic = ["..*", ".4.", ".*."]
     assert dict(solver_ex2.get_gears_engine_parts(schematic)) == {(0, 2): [4], (2, 1): [4]}
 
 

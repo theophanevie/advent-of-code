@@ -45,7 +45,7 @@ def main(input_file: str) -> int:
     return sum(map(compute_next, map(compute_pyramid, sensor_reads)))
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) != 2:
         raise ValueError(f"Invalid parameter, usage : {sys.argv[0]} <input_file.txt>")
     print(main(sys.argv[1]))

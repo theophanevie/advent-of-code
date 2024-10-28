@@ -29,12 +29,12 @@ def main(input_file: str) -> int:
     result = []
 
     for game_nb, game_combinations in reader(input_file):
-        result.append(reduce(lambda x, y: x*y, [val for val in game_combinations.values()]))
+        result.append(reduce(lambda x, y: x * y, [val for val in game_combinations.values()]))
 
     return sum(result)
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) != 2:
         raise ValueError(f"Invalid parameter, usage : {sys.argv[0]} <input_file.txt>")
     print(main(sys.argv[1]))
