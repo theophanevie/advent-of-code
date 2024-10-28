@@ -21,5 +21,5 @@ runs:
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3
       with:
-        name: coverage
-        path: ${{ inputs.path }}/.coverage
+        name: .coverage
+        path: ${{ inputs.path }}
