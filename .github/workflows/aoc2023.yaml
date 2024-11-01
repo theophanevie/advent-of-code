@@ -28,7 +28,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./aoc2023
+        working-directory: aoc2023
 
     steps:
       - name: Create build folder
