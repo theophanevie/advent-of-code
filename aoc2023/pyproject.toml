@@ -11,6 +11,8 @@ ruff = "^0.7.1"
 tqdm = "^4.66.5"
 coverage-badge = "^1.1.2"
 pydantic = "^2.10.4"
+flameprof = "^0.4"
+snakeviz = "^2.2.2"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0"
