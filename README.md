@@ -19,6 +19,7 @@ A non-exhaustive list of some used algorithms / math background :
 - [Taxicab_geometry](https://en.wikipedia.org/wiki/Taxicab_geometry)
 - [Chinese_remainder_theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem)
 - [Dijkstra's_algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
+- [Hex_grid](https://www.redblobgames.com/grids/hexagons/)
 
 ## 2023 Edition -> 50 :star2: :tada:
 
