@@ -17,10 +17,11 @@ A non-exhaustive list of some used algorithms / math background :
 - [Shunting_yard_algorithm](https://en.wikipedia.org/wiki/Shunting_yard_algorithm)
 - [Quadratic_form](https://en.wikipedia.org/wiki/Quadratic_form)
 - [Taxicab_geometry](https://en.wikipedia.org/wiki/Taxicab_geometry)
+- [Chinese_remainder_theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem)
+- [Dijkstra's_algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
 
 ## 2023 Edition -> 50 :star2: :tada:
 
 [![Coverage](https://theophanevie.github.io/advent-of-code/coverage.svg?raw=true)](https://github.com/theophanevie/aoc/actions/workflows/aoc2023.yaml)
 
 ![](static/2023.png)
-&
