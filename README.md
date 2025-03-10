@@ -24,6 +24,8 @@ A non-exhaustive list of some used algorithms / math background :
 
 ## 2023 Edition -> 50 :star2: :tada:
 
-[![Coverage](https://theophanevie.github.io/advent-of-code/coverage.svg?raw=true)](https://github.com/theophanevie/aoc/actions/workflows/aoc2023.yaml)
-
 ![](static/2023.png)
+
+## 2020 Edition -> 50 :star2: :tada:
+
+![](static/2020.png)
